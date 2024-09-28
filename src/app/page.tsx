@@ -1,9 +1,9 @@
-// import Navbar from "../components/Navbar.tsx";
 
-export default function Home() {
-  return (
+import App from '@/components/App';
+export default function Home(){
+  return(
     <>
-    <h1>Hello, k cha khabar?</h1>
+      <App />
     </>
-  );
+  )
 }
