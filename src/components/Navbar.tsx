@@ -25,7 +25,7 @@ export default function Navbar() {
             </button>
           </div>
         ) : (
-            <Link href="/login" className="px-4 py-2 bg-green-500 rounded">
+            <Link href="/Login" className="px-4 py-2 bg-green-500 rounded">
             Login/Signup
         </Link>
         
