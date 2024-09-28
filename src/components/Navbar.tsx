@@ -5,6 +5,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/lib/firebase';
 import Link from 'next/link';
 
+
+
 export default function Navbar() {
   const [user] = useAuthState(auth);
 
