@@ -3,7 +3,7 @@
 export default function Home() {
   return (
     <>
-    <h1>Hello, k cha?</h1>
+    <h1>Hello, k cha khabar?</h1>
     </>
   );
 }
