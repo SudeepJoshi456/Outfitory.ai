@@ -51,28 +51,20 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center p-8">
-      <motion.h1 initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:1, delay:1.5}}  className="text-6xl font-serif racing-sans-one-regular">Welcome, {username || 'Guest'}!</motion.h1>
+      <motion.h1 initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:0.25, delay:0.25}}  className="text-6xl font-serif racing-sans-one-regular">Welcome, {username || 'Guest'}!</motion.h1>
       <div className="w-2/3 mt-8 flex flex-col items-center justify-center">
-        <div className="w-1/2 m-4 flex justify-center racing-sans-one-regular">
-        <button
-            onClick={() => {
-              alert(`In progress`);
-            }}
-            className="w-full p-8 bg-slate-500 text-white rounded block text-2xl "
-          >
+        <motion.div className="w-1/2 m-4 flex justify-center racing-sans-one-regular" initial={{x:100, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:0.25, delay:0.5}}>
+        <Link href="/closet" className="w-full p-8 bg-slate-800 text-white rounded block text-2xl text-center">
             Your Closet
-          </button>
-        </div>
-        <div className='w-1/2 m-4 flex justify-center racing-sans-one-regular'>
-          <button
-            onClick={() => {
-              alert(`The weather is ${weather}. Consider wearing white t-shirt and blue shorts.`);
-            }}
-            className="w-full p-8 bg-green-500 text-white rounded text-2xl"
-          >
+        </Link>
+        
+        </motion.div>
+        <motion.div className="w-1/2 m-4 flex justify-center racing-sans-one-regular" initial={{x:100, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:0.25, delay:0.5}}>
+        <Link href="/AiResponse" className="w-full p-8 bg-pink-700 text-white rounded block text-2xl text-center">
             Get AI Recommendation
-          </button>
-        </div>
+        </Link>
+        
+        </motion.div>
         
 
         

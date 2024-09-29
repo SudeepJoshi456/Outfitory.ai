@@ -5,7 +5,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/lib/firebase';
 import Link from 'next/link';
 import "@/styles/home.styles.css";
-
+import {motion} from "framer-motion";
 
 
 export default function Navbar() {
@@ -15,10 +15,10 @@ export default function Navbar() {
     <nav className="flex justify-between p-4 bg-transparent text-white">
       <div>
       <Link href="/" className="text-lg font-bold racing-sans-one-regular">
-    Closet App
+    <motion.button initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:0.25, delay:0.5}} >Closet App</motion.button>
     </Link>
       </div>
-      <div>
+      <motion.div initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:0.3, delay:0.5}}>
         {user ? (
           <div className="flex items-center space-x-4">
             <img src={user.photoURL || '/default-profile.png'} alt="Profile" className="w-8 h-8 rounded-full" />
@@ -33,7 +33,7 @@ export default function Navbar() {
         </Link>
         
         )}
-      </div>
+      </motion.div>
     </nav>
   );
 }
