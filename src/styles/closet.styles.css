@@ -1,0 +1,101 @@
+
+/* Global Styles */
+
+@import url('https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap');
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Racing Sans One', cursive; /* Use Racing Sans One font */
+    background-image: url("../public/images/race-track.jpg"); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    color: #000000; /* Text color */
+}
+
+/* Container for the entire page */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Start from the top */
+    min-height: 100vh; /* Full viewport height */
+    text-align: center;
+    padding-top: 20px; /* Add some padding to the top */
+    backdrop-filter: blur(5px); /* Slight blur effect for the container */
+}
+
+/* Title Style */
+h1 {
+    font-size: 4rem; /* Big text for "YOUR CLOSET" */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Enhanced text shadow */
+}
+
+/* Button Style */
+.add-outfit-button {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    background-color: #FF6347; /* Tomato color */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effect */
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Added shadow for depth */
+}
+
+.add-outfit-button:hover {
+    background-color: #FF4500; /* Darker tomato on hover */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+/* Closet Lists Container */
+.closet-lists {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+/* Tops and Bottoms List Styles */
+.list {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly transparent white */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px; /* Fixed width for lists */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Vertical Divider */
+.vertical-divider {
+    width: 2px; /* Width of the vertical line */
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white for the divider */
+    margin: 0 20px; /* Spacing around the divider */
+}
+
+/* List Item Styles */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 0;
+}
+
+.list-item:last-child {
+    border-bottom: none; /* Remove border for last item */
+}
+
+/* Remove Button Style */
+.remove-button {
+    background: none;
+    border: none;
+    color: #FF6347; /* Tomato color for remove button */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.remove-button:hover {
+    color: #FF4500; /* Darker tomato on hover */
+}
