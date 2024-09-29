@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { auth } from '@/lib/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { FaGoogle, FaFacebook, FaApple, FaGithub } from 'react-icons/fa'; // Make sure to install react-icons
+// import { FaGoogle, FaFacebook, FaApple, FaGithub } from 'react-icons/fa'; // Make sure to install react-icons
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -64,20 +64,7 @@ export default function Login() {
           {isSignup ? 'Login here' : 'Sign up here'}
         </span>
       </p>
-      <div className="flex space-x-4">
-        <button onClick={() => handleSocialSignIn('Google')} className="flex items-center bg-gray-800 p-2 rounded">
-          <FaGoogle className="mr-2" /> Google
-        </button>
-        <button onClick={() => handleSocialSignIn('Facebook')} className="flex items-center bg-gray-800 p-2 rounded">
-          <FaFacebook className="mr-2" /> Facebook
-        </button>
-        <button onClick={() => handleSocialSignIn('Apple')} className="flex items-center bg-gray-800 p-2 rounded">
-          <FaApple className="mr-2" /> Apple
-        </button>
-        <button onClick={() => handleSocialSignIn('GitHub')} className="flex items-center bg-gray-800 p-2 rounded">
-          <FaGithub className="mr-2" /> GitHub
-        </button>
-      </div>
+      
     </div>
   );
 }
