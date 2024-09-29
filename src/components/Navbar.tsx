@@ -6,6 +6,7 @@ import { auth } from '@/lib/firebase';
 import Link from 'next/link';
 import "@/styles/home.styles.css";
 import {motion} from "framer-motion";
+import Image from 'next/image';
 
 
 export default function Navbar() {
@@ -21,7 +22,7 @@ export default function Navbar() {
       <motion.div initial={{y:-100, opacity:0}} animate={{y:0, opacity:1}} transition={{duration:0.3, delay:0.5}}>
         {user ? (
           <div className="flex items-center space-x-4">
-            <img src={user.photoURL || '/default-profile.png'} alt="Profile" className="w-8 h-8 rounded-full" />
+            <Image src={user.photoURL || '/default-profile.png'} alt="Profile" className="w-8 h-8 rounded-full" />
             <span>{user.displayName}</span>
             <button onClick={() => auth.signOut()} className="px-4 py-2 bg-red-500 rounded">
               Logout

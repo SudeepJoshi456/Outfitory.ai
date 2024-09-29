@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { fetchAllOutfits } from '../../lib/firebaseUtil';
 import { getAIRecommendation } from '../../lib/aiUtils';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase'; // Adjust if necessary
-import { Outfit } from '@/lib/types'; // Adjust the path as needed
+import { auth } from '@/lib/firebase'; 
 import axios from "axios";
 const OutfitRecommendation = () => {
   const [recommendation, setRecommendation] = useState<string | null>(null);

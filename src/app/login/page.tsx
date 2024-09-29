@@ -30,10 +30,10 @@ export default function Login() {
     }
   };
 
-  const handleSocialSignIn = (provider: string) => {
-    // Handle social sign-in logic based on the provider
-    alert(`Sign in with ${provider} is not implemented yet.`);
-  };
+  // const handleSocialSignIn = (provider: string) => {
+  //   // Handle social sign-in logic based on the provider
+  //   alert(`Sign in with ${provider} is not implemented yet.`);
+  // };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">

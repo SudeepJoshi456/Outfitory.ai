@@ -1,10 +1,10 @@
 "use client";
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth, db } from '@/lib/firebase';
+import { auth} from '@/lib/firebase';
 import { useEffect, useState } from 'react';
-import { doc, getDoc } from 'firebase/firestore';
-import axios from 'axios';
+// import { doc, getDoc } from 'firebase/firestore';
+// import axios from 'axios';
 import Link from 'next/link';
 import "@/styles/home.styles.css"
 import { motion } from "framer-motion";
@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 export default function Home() {
   const [user] = useAuthState(auth);
   const [username, setUsername] = useState('');
-  const [weather, setWeather] = useState('');
   
   useEffect(() => {
     const fetchUserData = async () => {
@@ -30,30 +29,30 @@ export default function Home() {
     fetchUserData();
   }, [user]);
 
-  useEffect(() => {
-    const fetchWeather = async (lat: number, lon: number) => {
-      const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`);
-      setWeather(res.data.weather[0].description);
-    };
+  // useEffect(() => {
+  //   const fetchWeather = async (lat: number, lon: number) => {
+  //     const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`);
+  //     setWeather(res.data.weather[0].description);
+  //   };
 
-    const getLocationAndFetchWeather = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            fetchWeather(latitude, longitude);
-          },
-          (error) => {
-            console.error("Error fetching location:", error);
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
-      }
-    };
+  //   const getLocationAndFetchWeather = () => {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(
+  //         (position) => {
+  //           const { latitude, longitude } = position.coords;
+  //           fetchWeather(latitude, longitude);
+  //         },
+  //         (error) => {
+  //           console.error("Error fetching location:", error);
+  //         }
+  //       );
+  //     } else {
+  //       console.error("Geolocation is not supported by this browser.");
+  //     }
+  //   };
 
-    getLocationAndFetchWeather();
-  }, []);
+  //   getLocationAndFetchWeather();
+  // }, []);
 
   return (
     <div className="flex flex-col items-center p-8">
