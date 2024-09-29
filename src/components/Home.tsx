@@ -7,6 +7,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import axios from 'axios';
 import Link from 'next/link';
 import "@/styles/home.styles.css"
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [user] = useAuthState(auth);
@@ -50,14 +51,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center p-8">
-      <h1 className="text-6xl font-serif racing-sans-one-regular">Welcome, {username || 'Guest'}!</h1>
+      <motion.h1 initial={{x:-100, opacity:0}} animate={{x:0, opacity:1}} transition={{duration:1, delay:1.5}}  className="text-6xl font-serif racing-sans-one-regular">Welcome, {username || 'Guest'}!</motion.h1>
       <div className="w-2/3 mt-8 flex flex-col items-center justify-center">
         <div className="w-1/2 m-4 flex justify-center racing-sans-one-regular">
         <button
             onClick={() => {
               alert(`In progress`);
             }}
-            className="w-full p-8 bg-slate-500 text-white rounded block text-2xl"
+            className="w-full p-8 bg-slate-500 text-white rounded block text-2xl "
           >
             Your Closet
           </button>
