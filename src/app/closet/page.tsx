@@ -69,6 +69,7 @@ export default function Closet() {
       alert("Please fill in all fields."); // Validation alert
     }
   };
+  
 
   return (
     <div className="p-4">

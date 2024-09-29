@@ -17,8 +17,14 @@ export default function Home() {
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
-        const userDoc = await getDoc(doc(db, 'users', user.uid));
-        setUsername(userDoc.exists() ? userDoc.data()?.name : user.displayName);
+        const email = user.email || "Guest";
+        const regex = /^([^@]+)/;
+        const match = email.match(regex);
+        if(match){
+        setUsername(match[1]);
+        } else {
+          setUsername("Guest");
+        }
       }
     };
     fetchUserData();
