@@ -1,11 +1,12 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from 'react';
-import { db } from '@/lib/firebase'; // Make sure this path is correct
+import { db } from '@/lib/firebase'; // Ensure this path is correct
 import { collection, getDocs, doc, deleteDoc, addDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/lib/firebase'; // Adjust if necessary
 import { Outfit } from '@/lib/types'; // Adjust the path as needed
+import '@/styles/closet.styles.css'; // Import the CSS file
 
 export default function Closet() {
   const [user] = useAuthState(auth); // Get user authentication state
@@ -17,14 +18,14 @@ export default function Closet() {
   // Fetch closet items
   const fetchCloset = async () => {
     if (user) {
-      const closetRef = collection(db, `users/${user.uid}/closet`); // Use the closet collection directly
+      const closetRef = collection(db, `users/${user.uid}/closet`);
       const snapshot = await getDocs(closetRef);
 
       const topsList: Outfit[] = [];
       const bottomsList: Outfit[] = [];
 
       snapshot.docs.forEach((doc) => {
-        const outfit = { id: doc.id, ...doc.data() } as Outfit; // Fixed here
+        const outfit = { id: doc.id, ...doc.data() } as Outfit;
         if (outfit.category === 'top') {
           topsList.push(outfit);
         } else if (outfit.category === 'bottom') {
@@ -37,100 +38,94 @@ export default function Closet() {
     }
   };
 
-  // useEffect to fetch closet items when the user changes
   useEffect(() => {
     if (user) {
       fetchCloset();
     }
   }, [user]);
 
-  // Function to remove an outfit
   const removeOutfit = async (id: string) => {
     if (user) {
       const outfitRef = doc(db, `users/${user?.uid}/closet/${id}`);
       await deleteDoc(outfitRef);
-      fetchCloset(); // Refresh closet items after removal
+      fetchCloset();
     }
   };
 
-  // Function to add a new outfit
   const addOutfit = async () => {
-    // Check if user is defined and all fields are filled
     if (user && newOutfit.color.trim() && newOutfit.name.trim()) {
       await addDoc(collection(db, `users/${user.uid}/closet`), {
         color: newOutfit.color,
         name: newOutfit.name,
         category: newOutfit.category,
       });
-      setNewOutfit({ color: '', category: 'top', name: '' }); // Reset the form
-      setShowAddForm(false); // Hide form after submission
-      fetchCloset(); // Refresh closet items after adding
+      setNewOutfit({ color: '', category: 'top', name: '' });
+      setShowAddForm(false);
+      fetchCloset();
     } else {
-      alert("Please fill in all fields."); // Validation alert
+      alert("Please fill in all fields.");
     }
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Your Closet</h1>
-
-      {/* Button to toggle the add outfit form */}
-      <button
-        onClick={() => setShowAddForm(!showAddForm)}
-        className="mb-4 px-4 py-2 bg-blue-500 text-white"
-      >
+    <div className="container">
+      <h1>YOUR CLOSET</h1>
+      <button className="add-outfit-button" onClick={() => setShowAddForm(!showAddForm)}>
         {showAddForm ? 'Cancel' : 'Add Outfit'}
       </button>
 
-      {/* Add outfit form */}
       {showAddForm && (
-        <div className="mb-4">
+        <div className="add-outfit-form">
           <input
             type="text"
             placeholder="Color"
             value={newOutfit.color}
-            onChange={e => setNewOutfit({ ...newOutfit, color: e.target.value })}
-            className="border p-2 mr-2"
+            onChange={e => setNewOutfit(prev => ({ ...prev, color: e.target.value }))}
+            className="input"
           />
           <input
             type="text"
             placeholder="Name"
             value={newOutfit.name}
-            onChange={e => setNewOutfit({ ...newOutfit, name: e.target.value })}
-            className="border p-2 mr-2"
+            onChange={e => setNewOutfit(prev => ({ ...prev, name: e.target.value }))}
+            className="input"
           />
           <select
             value={newOutfit.category}
-            onChange={e => setNewOutfit({ ...newOutfit, category: e.target.value })}
-            className="border p-2 mr-2"
+            onChange={e => setNewOutfit(prev => ({ ...prev, category: e.target.value }))}
+            className="select"
           >
             <option value="top">Top</option>
             <option value="bottom">Bottom</option>
           </select>
-          <button onClick={addOutfit} className="px-4 py-2 bg-blue-500 text-white">
+          <button className="add-outfit-button" onClick={addOutfit}>
             Add Outfit
           </button>
         </div>
       )}
 
-      <h2 className="text-xl font-semibold mb-2">Tops</h2>
-      <div className="mb-4">
-        {tops.map(top => (
-          <div key={top.id} className="flex justify-between border-b py-2">
-            <span>{top.color} - {top.name}</span>
-            <button onClick={() => removeOutfit(top.id)} className="text-red-500">Remove</button>
-          </div>
-        ))}
-      </div>
+      <div className="closet-lists">
+        <div className="list">
+          <h2>Tops</h2>
+          {tops.map(top => (
+            <div key={top.id} className="list-item">
+              <span>{top.color} - {top.name}</span>
+              <button className="remove-button" onClick={() => removeOutfit(top.id)}>Remove</button>
+            </div>
+          ))}
+        </div>
 
-      <h2 className="text-xl font-semibold mb-2">Bottoms</h2>
-      <div>
-        {bottoms.map(bottom => (
-          <div key={bottom.id} className="flex justify-between border-b py-2">
-            <span>{bottom.color} - {bottom.name}</span>
-            <button onClick={() => removeOutfit(bottom.id)} className="text-red-500">Remove</button>
-          </div>
-        ))}
+        <div className="vertical-divider"></div>
+
+        <div className="list">
+          <h2>Bottoms</h2>
+          {bottoms.map(bottom => (
+            <div key={bottom.id} className="list-item">
+              <span>{bottom.color} - {bottom.name}</span>
+              <button className="remove-button" onClick={() => removeOutfit(bottom.id)}>Remove</button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
