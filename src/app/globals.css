@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  /* --background: #ffffff; */
   --foreground: #171717;
+  background-image: url("../public/images/racing-jpg.jpg");
+  background-size:cover;
 }
 
 @media (prefers-color-scheme: dark) {
