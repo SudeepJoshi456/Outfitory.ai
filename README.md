@@ -43,7 +43,7 @@ Follow these steps to get started with **Outfitory AI**:
 
 1. Clone the repository:
    ```bash
-     git clone https://github.com/yourusername/outfitory-ai.git
+     git clone https://github.com/SudeepJoshi456/outfitory-ai.git
 2. Navigate to the project folder:
    ```bash
      cd outfitory-ai
