@@ -30,11 +30,11 @@ Our project was a collaborative effort, with all team members contributing equal
 - **AI-Powered Outfit Suggestions**: Based on the current weather conditions, the app suggests what to wear.
 
 ## Tech Stack
-- **Frontend**: Next.js, TypeScript
-- **Backend**: Firebase (Firestore, Authentication)
-- **CSS**: Styled Components, TailwindCSS
-- **API**: OpenWeatherMap, Gemini, Geolocation API
-- **Deployment**: Vercel
+- **Frontend**: `Next.js`, `TypeScript`
+- **Backend**: `Firebase (Firestore, Authentication)`
+- **CSS**: `Styled Components`, `TailwindCSS`
+- **API**: `OpenWeatherMap`, `Gemini`, `Geolocation API`
+- **Deployment**: `Vercel`
 - **Other Libraries**: `Axios`, `React Firebase Hooks`
 
 ## Installation
